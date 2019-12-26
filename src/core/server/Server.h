@@ -1,17 +1,16 @@
-//
-// Created by Joscha Vack on 12/7/2019.
-//
+#pragma once
 
-#ifndef TS3TOOLS_SERVER_H
-#define TS3TOOLS_SERVER_H
+/**
+  * Created by Joscha Vack on 12/26/2019.
+  *
+  **/
 
-#include <boost/container/list.hpp>
+#include "core/client/ClientList.h"
+#include "core/channel/ChannelList.h"
+
+#include <vector>
 #include <spdlog/spdlog.h>
-
 #include <teamspeak/clientlib_public_definitions.h>
-
-#include "base/client/ClientList.h"
-#include "base/channel/ChannelList.h"
 
 class Server {
 private:
@@ -23,8 +22,6 @@ private:
     Client* self = nullptr;
     ClientList clientList = ClientList();
     ChannelList channelList = ChannelList();
-    friend class CommandProcessor;
-    friend class CommandVisitor;
 public:
     explicit Server(uint64 conId);
     ~Server();
@@ -47,8 +44,4 @@ public: /* Ts3 Functions */
 private: /* Helper */
     Client* loadClient(anyID clientId);
     Channel* loadChannel(uint64 channelId);
-
-    friend class ClientItem;
 };
-
-#endif //TS3TOOLS_SERVER_H

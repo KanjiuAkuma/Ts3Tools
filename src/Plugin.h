@@ -1,10 +1,9 @@
+#pragma once
+
 /**
   * Created by Joscha Vack on 12/9/2019.
   * Required ts3 functions for plugin to load and work
   **/
-
-#ifndef TS3TOOLS_PLUGIN_H
-#define TS3TOOLS_PLUGIN_H
 
 /* Disable compiler warnings */
 #pragma warning (disable : 4100)  /* Disable Unreferenced parameter warning */
@@ -12,7 +11,7 @@
 #include <Windows.h>
 #include <teamspeak/public_definitions.h>
 
-#include "Macros.h"
+#include "core/Core.h"
 
 extern "C" {
     // Dll Startup
@@ -60,5 +59,3 @@ extern "C" {
 
 
 };
-
-#endif //TS3TOOLS_PLUGIN_H

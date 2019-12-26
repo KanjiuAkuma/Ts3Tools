@@ -4,13 +4,13 @@
   **/
 
 #include "Plugin.h"
-
-#include <ts3_functions.h>
+#include "core/Core.h"
 
 #include "GlobalDefinitions.h"
-#include "logger/Logger.h"
+#include "core/logger/Logger.h"
+#include "core/server/Server.h"
 
-#include "util/Util.h"
+#include <ts3_functions.h>
 
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpReserved) {
     if (fdwReason == DLL_PROCESS_ATTACH) {
@@ -23,12 +23,12 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpReserved) {
 
 const char* ts3plugin_name() {
     TS3_CALLBACK;
-    return APPEND_DEBUG(PLUGIN_NAME);
+    return PLUGIN_NAME;
 }
 
 const char* ts3plugin_version() {
     TS3_CALLBACK;
-    return APPEND_DEBUG(PLUGIN_VERSION);
+    return PLUGIN_VERSION;
 }
 
 int ts3plugin_apiVersion() {
@@ -43,7 +43,7 @@ const char* ts3plugin_author() {
 
 const char* ts3plugin_description() {
     TS3_CALLBACK;
-    return APPEND_DEBUG_NL(PLUGIN_DESCRIPTION);
+    return PLUGIN_DESCRIPTION;
 }
 
 const char* ts3plugin_commandKeyword() {
@@ -269,7 +269,6 @@ void ts3plugin_onHotkeyEvent(const char* keyword) {
 
 int ts3plugin_processCommand(uint64 serverConnectionHandlerID, const char* command) {
     TS3_CALLBACK_ARG("serverConnectionHandlerID: {}, Command: {}", serverConnectionHandlerID, command);
-    commandProcessor.processCommand(serverList.getServer(serverConnectionHandlerID), command);
     return 0;
 }
 

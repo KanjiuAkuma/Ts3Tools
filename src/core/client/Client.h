@@ -1,12 +1,13 @@
-//
-// Created by Joscha Vack on 12/7/2019.
-//
+#pragma once
 
-#ifndef TS3TOOLS_CLIENT_H
-#define TS3TOOLS_CLIENT_H
+/**
+  * Created by Joscha Vack on 12/26/2019.
+  *
+  **/
+
 
 #include <string>
-#include <boost/unordered_map.hpp>
+#include <unordered_map>
 
 #include <teamspeak/public_definitions.h>
 
@@ -35,5 +36,3 @@ public:
     uint64 getDbId();
     Channel* getChannel();
 };
-
-#endif //TS3TOOLS_CLIENT_H

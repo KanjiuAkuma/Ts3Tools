@@ -1,13 +1,14 @@
-//
-// Created by Joscha Vack on 12/7/2019.
-//
+#pragma once
 
-#ifndef TS3TOOLS_CHANNEL_H
-#define TS3TOOLS_CHANNEL_H
-
-#include <boost/container/slist.hpp>
+/**
+  * Created by Joscha Vack on 12/26/2019.
+  *
+  **/
 
 #include <teamspeak/public_definitions.h>
+
+#include <string>
+#include <vector>
 
 class Client;
 
@@ -19,7 +20,7 @@ class Channel {
 private:
     uint64 id;
     std::string name;
-    boost::container::slist<Client*> clients = {};
+    std::vector<Client*> clients = {};
 public:
     Channel(std::string name, uint64 id);
 
@@ -30,5 +31,3 @@ public:
     uint64 getId();
     int getClientCount();
 };
-
-#endif //TS3TOOLS_CHANNEL_H

@@ -4,7 +4,7 @@
   **/
 
 #include "ChannelList.h"
-#include "Macros.h"
+#include "core/Core.h"
 
 void ChannelList::add(uint64 channelId, Channel* channel) {
     ASSERT(channels.find(channelId) == channels.end());

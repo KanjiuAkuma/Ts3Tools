@@ -5,8 +5,6 @@
 
 #include "Client.h"
 
-#include "Macros.h"
-
 Client::Client(std::string name, anyID id, uint64 dbId, Channel* channel) : name(name), id(id), dbId(dbId), channel(channel) {}
 
 void Client::onConnect(anyID newId, Channel* newChannel) {

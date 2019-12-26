@@ -4,7 +4,7 @@
   **/
 
 #include "ServerList.h"
-#include "Macros.h"
+#include "core/Core.h"
 
 void ServerList::onConnectionOpened(uint64 conId) {
     ASSERT(servers.find(conId) == servers.end())

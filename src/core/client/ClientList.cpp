@@ -3,10 +3,10 @@
   *
   **/
 
-#include "ClientList.h"
-#include "Macros.h"
 
-#include <boost/algorithm/algorithm.hpp>
+#include "ClientList.h"
+#include "core/Core.h"
+
 
 ClientList::~ClientList() {
     for (const auto& it : clients) {
@@ -34,7 +34,7 @@ bool ClientList::hasClient(anyID clientId) {
     return clientIds.find(clientId) != clientIds.end();
 }
 
-bool ClientList::hasClient(uint64 clientDbId) {
+bool ClientList::hasClientDbId(uint64 clientDbId) {
     return clients.find(clientDbId) != clients.end();
 }
 
@@ -45,7 +45,7 @@ Client* ClientList::get(anyID clientId) {
     return clients[clientDbId];
 }
 
-Client* ClientList::get(uint64 clientDbId) {
+Client* ClientList::getByDbId(uint64 clientDbId) {
     ASSERT(clients.find(clientDbId) != clients.end())
     return clients[clientDbId];
 }

@@ -1,21 +1,25 @@
+#pragma once
+
 /**
   * Created by Joscha Vack on 12/9/2019.
   *
   **/
 
-#ifndef TS3PLUGINTEMPLATE2_LOGGER_H
-#define TS3PLUGINTEMPLATE2_LOGGER_H
 
 #include <spdlog/spdlog.h>
 
 #include <teamspeak/public_definitions.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/sinks/basic_file_sink.h>
 
 
 class Logger
 {
 private:
-    static std::shared_ptr<spdlog::logger> coreLogger;  // logger for the core
-    static std::shared_ptr<spdlog::logger> pluginLogger;      // logger for the plugin
+    static std::shared_ptr<spdlog::sinks::stdout_color_sink_mt> core_console_sink;          // console sinks
+    static std::shared_ptr<spdlog::sinks::basic_file_sink_mt> core_file_sink;               // file sinks
+    static std::shared_ptr<spdlog::logger> coreLogger;                                      // logger for the core
+    static std::shared_ptr<spdlog::logger> pluginLogger;                                    // logger for the plugin
 
 public:
     static void init();
@@ -47,5 +51,3 @@ public:
 #define LOG_WARN(...)       Logger::getLogger()->warn(__VA_ARGS__)
 #define LOG_ERROR(...)      Logger::getLogger()->error(__VA_ARGS__)
 #define LOG_CRITICAL(...)   Logger::getLogger()->critical(__VA_ARGS__)
-
-#endif //TS3PLUGINTEMPLATE2_LOGGER_H

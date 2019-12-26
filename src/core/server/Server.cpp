@@ -5,14 +5,11 @@
 
 
 #include "Server.h"
-#include "Macros.h"
-
-#include <teamspeak/public_definitions_rare.h>
+#include "core/Core.h"
 
 #include "GlobalDefinitions.h"
 
-#include "logger/Logger.h"
-#include "util/Util.h"
+#include <teamspeak/public_definitions_rare.h>
 
 Server::Server(uint64 conId) : conId(conId) {
     logger = Logger::createServerLogger(conId);
@@ -44,12 +41,12 @@ void Server::onClientConnected(anyID clientId, uint64 newChannelId, const std::s
 
     uint64 dbId = 0;
     CORE_REQUIRE(ts3Functions.getClientVariableAsUInt64(conId, clientId, CLIENT_DATABASE_ID, &dbId));
-    if (!clientList.hasClient(dbId)) {  // new client -> add to client list
+    if (!clientList.hasClientDbId(dbId)) {  // new client -> add to client list
         client = loadClient(clientId);
         clientList.add(clientId, client);
     }
     else {
-        client = clientList.get(dbId);
+        client = clientList.getByDbId(dbId);
         clientList.addId(clientId, dbId);
     }
 

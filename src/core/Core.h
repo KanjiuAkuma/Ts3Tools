@@ -1,32 +1,29 @@
+#pragma once
+
 /**
-  * Created by Joscha Vack on 12/9/2019.
+  * Created by Joscha Vack on 12/26/2019.
   *
   **/
 
-#ifndef TS3TOOLS_MACROS_H
-#define TS3TOOLS_MACROS_H
+#ifdef NDEBUG
+    #define BUILD
+#else
+    #define BUILD "-- debug"
+#endif
 
 /** Plugin info **/
-#define PLUGIN_NAME "Ts3 Tools"
-#define PLUGIN_VERSION "1.0"
-#define PLUGIN_AUTHOR "Kanjiu Akuma"
-#define PLUGIN_DESCRIPTION "Ts3 Utility Plugin\n"\
+#define PLUGIN_NAME "Ts3 Tools" BUILD
+#define PLUGIN_VERSION "1.0" BUILD
+#define PLUGIN_AUTHOR "Kanjiu Akuma" BUILD
+#define PLUGIN_DESCRIPTION "Ts3 Utility Plugin\n" BUILD\
                            "[B]Feature List:[/B]\n"\
                            "    - None as of now."
 #define PLUGIN_COMMAND_PREFIX "T"
 
-#ifdef NDEBUG
-#define APPEND_BUILD(x) x
-#define APPEND_DEBUG_NL(x) x
-#else
-#define APPEND_DEBUG(x) x "-- debug"
-#define APPEND_DEBUG_NL(x) x "\ndebug version"
-#endif
-
 /** Custom Macros **/
 
-#include "logger/Logger.h"
-#include "teamspeak/public_errors.h"
+#include "core/logger/Logger.h"
+#include <teamspeak/public_errors.h>
 
 #ifdef NDEBUG
 #define ASSERT(v)
@@ -51,5 +48,3 @@
 #define PLUGIN_API_VERSION 23
 #define _strcpy(dest, destSize, src) strcpy_s(dest, destSize, src)
 #define PLUGINS_EXPORTDLL __declspec(dllexport)
-
-#endif //TS3TOOLS_MACROS_H

@@ -8,4 +8,3 @@
 TS3Functions ts3Functions;
 char* pluginID = nullptr;
 ServerList serverList {};
-CommandProcessor commandProcessor {};

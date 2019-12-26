@@ -4,19 +4,17 @@
   **/
 
 #include "Channel.h"
-#include "Macros.h"
-
-#include <boost/range/algorithm/find.hpp>
+#include "core/Core.h"
 
 
 Channel::Channel(std::string name, uint64 id) : name(name), id(id) {}
 
 void Channel::onClientJoined(Client* client) {
-    clients.push_front(client);
+    clients.push_back(client);
 }
 
 void Channel::onClientLeft(Client* client) {
-    auto ndx = boost::find(clients, client);
+    auto ndx = std::find(clients.begin(), clients.end(), client);
     ASSERT(ndx != clients.end());
     clients.erase(ndx);
 }
