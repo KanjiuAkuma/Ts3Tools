@@ -4,33 +4,36 @@ set(PROJECT Ts3Tools)
 project(${PROJECT})
 set(CMAKE_CXX_STANDARD 20)
 
-set(INCLUDES src/)
-
 set(FILES
-        src/Macros.h
-        src/Plugin.h
-        src/Plugin.cpp
-        src/GlobalDefinitions.h
-        src/GlobalDefinitions.cpp
-        src/util/Util.h
-        src/util/Util.cpp
-        src/logger/Logger.h
-        src/logger/Logger.cpp
-        src/base/server/Server.h
-        src/base/server/Server.cpp
-        src/base/server/ServerList.h
-        src/base/server/ServerList.cpp
-        src/base/channel/Channel.h
-        src/base/channel/Channel.cpp
-        src/base/channel/ChannelList.h
-        src/base/channel/ChannelList.cpp
-        src/base/client/Client.h
-        src/base/client/Client.cpp
-        src/base/client/ClientList.h
-        src/base/client/ClientList.cpp
-        src/util/Random.h
-        src/util/Random.cpp
-        )
+    src/Plugin.h
+    src/Plugin.cpp
+    src/GlobalDefinitions.h
+    src/GlobalDefinitions.cpp
+    src/util/Util.h
+    src/util/Util.cpp
+    src/core/Core.h
+    src/core/logger/Logger.h
+    src/core/logger/Logger.cpp
+    src/core/server/Server.h
+    src/core/server/Server.cpp
+    src/core/server/ServerList.h
+    src/core/server/ServerList.cpp
+    src/core/channel/Channel.h
+    src/core/channel/Channel.cpp
+    src/core/channel/ChannelList.h
+    src/core/channel/ChannelList.cpp
+    src/core/client/Client.h
+    src/core/client/Client.cpp
+    src/core/client/ClientList.h
+    src/core/client/ClientList.cpp
+    src/util/Random.h
+    src/util/Random.cpp
+    )
+
+set(INCLUDES
+    src/
+    dependencies/ts3/include
+    dependencies/spdlog/include)
 
 add_subdirectory(dependencies/ts3)
 add_subdirectory(dependencies/spdlog)
