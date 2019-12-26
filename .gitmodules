@@ -1,0 +1,6 @@
+[submodule "dependencies/ts3"]
+	path = dependencies/ts3
+	url = https://github.com/KanjiuAkuma/Ts3PluginTemplate
+[submodule "dependencies/spdlog"]
+	path = dependencies/spdlog
+	url = https://github.com/KanjiuAkuma/spdlog
