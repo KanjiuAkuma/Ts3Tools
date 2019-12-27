@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-set(PROJECT Ts3Tools)
-
-project(${PROJECT})
+project(Ts3Tools)
 set(CMAKE_CXX_STANDARD 20)
 
 set(FILES
@@ -28,15 +26,32 @@ set(FILES
     src/core/client/ClientList.cpp
     src/util/Random.h
     src/util/Random.cpp
-    )
+    src/ui/Window.cpp
+    src/ui/Window.h
+    src/ui/UiThread.cpp src/ui/UiThread.h
+    # -- glad -- #
+    dependencies/glad/src/glad.c
+    src/ui/Ui.h src/ui/Ui.cpp)
 
 set(INCLUDES
     src/
+    dependencies/glad/include
+    dependencies/glfw/include
+    dependencies/imgui
+    dependencies/spdlog/include
     dependencies/ts3/include
-    dependencies/spdlog/include)
+    )
 
-add_subdirectory(dependencies/ts3)
+
+# add_subdirectory(dependencies/glad)
+add_subdirectory(dependencies/glfw)
+add_subdirectory(dependencies/imgui)
 add_subdirectory(dependencies/spdlog)
+add_subdirectory(dependencies/ts3)
 
-add_library(${PROJECT} SHARED ${FILES})
-include_directories(${PROJECT_NAME} PRIVATE ${INCLUDES})
+add_definitions(-DGLFW_INCLUDE_NONE)
+add_library(Ts3Tools SHARED ${FILES})
+target_link_libraries(Ts3Tools PUBLIC glfw)
+target_link_libraries(Ts3Tools PUBLIC imgui)
+target_link_libraries(Ts3Tools PUBLIC spdlog)
+target_include_directories(Ts3Tools PUBLIC ${INCLUDES})
